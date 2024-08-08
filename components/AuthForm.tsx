@@ -18,6 +18,7 @@ import CustomInput from './CustomInput'
 import { authFormSchema } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
 import { getLoggedInUser, signIn, signUp } from '@/lib/actions/user.actions'
+import PlaidLink from './PlaidLink'
 
 const AuthForm = ({ type }: { type: string }) => {
   const router = useRouter();
@@ -41,8 +42,20 @@ const AuthForm = ({ type }: { type: string }) => {
 
       try {
         // Sign up with Appwrite & create a plain link token
+        const userData = {
+          firstName: data.firstName!,
+          lastName: data.lastName!,
+          address1: data.address1!,
+          city: data.city!,
+          state: data.state!,
+          postalCode: data.postalCode!,
+          dateOfBirth: data.dateOfBirth!,
+          ssn: data.ssn!,
+          email: data.email,
+          password: data.password
+        }
         if(type === 'sign-up') {
-          const newUser = await signUp(data);
+          const newUser = await signUp(userData);
 
           setuser(newUser);
           }
@@ -94,7 +107,10 @@ const AuthForm = ({ type }: { type: string }) => {
       </header>
       {user ? (
         <div className='flex flex-col gap-5'>
-          {/* PlaidLink */}
+          <PlaidLink 
+          user={user}
+          variant="primary"
+          />
         </div>
       ): (
         <>
@@ -155,7 +171,7 @@ const AuthForm = ({ type }: { type: string }) => {
                     />
                     <CustomInput 
                     control={form.control}
-                    name='SSN'
+                    name='ssn'
                     label='SSN'
                     placeholder='ex: xxx-xx-xxxx'
                     />
