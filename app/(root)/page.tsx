@@ -6,6 +6,7 @@ import { getLoggedInUser } from '@/lib/actions/user.actions'
 
 const Home = async () => {
   const loggedIn = await getLoggedInUser();
+  // const 
   return (
     <section className="home">
       <div className="home-content">

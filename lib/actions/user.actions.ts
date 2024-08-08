@@ -3,11 +3,12 @@
 import { ID } from "node-appwrite"
 import { createAdminClient, createSessionClient } from "../appwrite"
 import { cookies } from "next/headers"
-import { extractCustomerIdFromUrl, parseStringify } from "../utils"
+import { encryptId, extractCustomerIdFromUrl, parseStringify } from "../utils"
 import { CountryCode, ProcessorTokenCreateRequest, ProcessorTokenCreateRequestProcessorEnum, Products } from "plaid"
 import { plaidClient } from "../plaid"
 import { parse } from "path"
 import { addFundingSource, createDwollaCustomer } from "./dwolla.actions"
+import { revalidatePath } from "next/cache"
 
 const {
   APPWRITE_DATABASE_ID: DATABASE_ID,
@@ -129,7 +130,7 @@ export const createBankAccount = async ({
   accountId,
   accessToken,
   fundingSourceUrl,
-  sharableId,
+  shareableId,
 }: createBankAccountProps) => {
   try {
     const { database } = await createAdminClient();
@@ -144,7 +145,7 @@ export const createBankAccount = async ({
         accountId,
         accessToken,
         fundingSourceUrl,
-        sharableId,
+        shareableId,
       }
     )
 
@@ -203,7 +204,7 @@ export const exchangePublicToken = async ({
       accountId: accountData.account_id,
       accessToken,
       fundingSourceUrl,
-      sharableId: encryptId(accountData.account_id),
+      shareableId: encryptId(accountData.account_id),
     });
 
     // Revalidate the path to reflect the changes
