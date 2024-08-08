@@ -16,8 +16,11 @@ import { Input } from "@/components/ui/input"
 import { Divide, Loader } from 'lucide-react'
 import CustomInput from './CustomInput'
 import { authFormSchema } from '@/lib/utils'
+import { useRouter } from 'next/navigation'
+import { getLoggedInUser, signIn, signUp } from '@/lib/actions/user.actions'
 
 const AuthForm = ({ type }: { type: string }) => {
+  const router = useRouter();
   const [user, setuser] = useState(null);
   const [isLoading, setisLoading] = useState(false);
 
@@ -33,12 +36,29 @@ const AuthForm = ({ type }: { type: string }) => {
     })
    
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof formSchema>) {
-      // Do something with the form values.
-      // ✅ This will be type-safe and validated.
+    const onSubmit = async (data: z.infer<typeof formSchema>) => {
       setisLoading(true)
-      console.log(values)
-      setisLoading(false);
+
+      try {
+        // Sign up with Appwrite & create a plain link token
+        if(type === 'sign-up') {
+          const newUser = await signUp(data);
+
+          setuser(newUser);
+          }
+        if(type === 'sign-in') {
+            const response = await signIn({
+              email: data.email,
+              password: data.password
+            })
+
+            if(response) router.push('/')
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setisLoading(false)
+      }
     }
   
 
@@ -104,6 +124,13 @@ const AuthForm = ({ type }: { type: string }) => {
                   placeholder='Enter your specific mailing address'
                   />
 
+                  <CustomInput 
+                  control={form.control}
+                  name='city'
+                  label='City'
+                  placeholder='Enter your city'
+                  />
+
                   <div className='flex gap-4'>
                     <CustomInput 
                     control={form.control}
@@ -152,7 +179,7 @@ const AuthForm = ({ type }: { type: string }) => {
                 <Button type="submit" disabled={isLoading} className='form-btn'>
                   {isLoading ? (
                     <>
-                      <Loader size={20} className='animate-spin'/> &nsbp;
+                      <Loader size={20} className='animate-spin'/>
                       Loading...
                     </>
                   ) : type === 'sign-in'
