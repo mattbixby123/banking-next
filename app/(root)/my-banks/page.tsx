@@ -8,13 +8,12 @@ const MyBanks = async () => {
   const loggedIn = await getLoggedInUser();
 
   if (!loggedIn) {
-    // Handle the case where the user is not logged in
     return (
       <section className='flex'>
-        <div className="my-banks">
+        <div className="payment-transfer">
           <HeaderBox
-            title="My Bank Account"
-            subtext="Please log in to view your banking activities."
+            title="Payment Transfer"
+            subtext="Please log in to access payment transfer."
           />
         </div>
       </section>

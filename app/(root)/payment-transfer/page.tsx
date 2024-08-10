@@ -7,6 +7,21 @@ import React from 'react'
 const Transfer = async () => {
 
   const loggedIn = await getLoggedInUser();
+
+  if (!loggedIn) {
+    // Handle the case where the user is not logged in
+    return (
+      <section className='flex'>
+        <div className="my-banks">
+          <HeaderBox
+            title="My Bank Account"
+            subtext="Please log in to view your banking activities."
+          />
+        </div>
+      </section>
+    );
+  }
+
   const accounts = await getAccounts({ userId: loggedIn.$id })
 
   if(!accounts) return;
@@ -21,7 +36,8 @@ const Transfer = async () => {
 
       <section className="size-full pt-5">
         <PaymentTransferForm 
-          accounts={accounts.data}
+          // accounts={accounts.data}
+          accounts={accountsData}
         />
       </section>
     </section>
