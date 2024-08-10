@@ -6,19 +6,21 @@ import React from 'react'
 
 const MyBanks = async () => {
   const loggedIn = await getLoggedInUser();
-
+  
   if (!loggedIn) {
+    // Handle the case where the user is not logged in
     return (
       <section className='flex'>
-        <div className="payment-transfer">
+        <div className="my-banks">
           <HeaderBox
-            title="Payment Transfer"
-            subtext="Please log in to access payment transfer."
+            title="My Bank Account"
+            subtext="Please log in to view your banking activities."
           />
         </div>
       </section>
     );
   }
+
 
   const accounts = await getAccounts({ userId: loggedIn.$id })
 
