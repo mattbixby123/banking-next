@@ -21,7 +21,6 @@ const Home = async ({ searchParams: { id, page }}:
 
   console.log({
     accountsData,
-    appwriteItemId,
     account
   });
   

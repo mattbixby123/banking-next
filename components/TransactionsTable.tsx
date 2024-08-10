@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { formatAmount, getTransactionStatus, removeSpecialCharacters } from '@/lib/utils'
+import { formatAmount, formatDateTime, getTransactionStatus, removeSpecialCharacters } from '@/lib/utils'
 
 
 const TransactionsTable = ({ transactions }: TransactionTableProps) => {
@@ -25,7 +25,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
           <TableHead className="px-2 max-md:hidden">Category</TableHead>
         </TableRow>
       </TableHeader>
-      {/* <TableBody>
+      <TableBody>
         {transactions.map((t: Transaction) => {
           const status = getTransactionStatus(new Date(t.date))
           const amount = formatAmount(t.amount)
@@ -52,7 +52,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
               </TableCell>
 
               <TableCell className="pl-2 pr-10">
-                <CategoryBadge category={status} /> 
+                {/* <CategoryBadge category={status} />  */}
               </TableCell>
 
               <TableCell className="min-w-32 pl-2 pr-10">
@@ -64,12 +64,12 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
               </TableCell>
 
               <TableCell className="pl-2 pr-10 max-md:hidden">
-               <CategoryBadge category={t.category} /> 
+               {/* <CategoryBadge category={t.category} />  */}
               </TableCell>
             </TableRow>
           )
         })}
-      </TableBody> */}
+      </TableBody>
     </Table>
   )
 }
