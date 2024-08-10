@@ -13,8 +13,22 @@
      This project was built using Next JS, TypeScript, TailwindCSS, and Appwrite. Please visit the app @ https://banking-next-khaki.vercel.app
      create a user and connect a bank using the plaid sandbox username: 'user_good' password: 'user_pass'.
     </div>
-    
 
+# FinTech Tools Overview
+
+## Dwolla
+
+Dwolla is a financial technology company that provides a platform for businesses to integrate sophisticated payment solutions into their applications or systems. It specializes in facilitating bank transfers and digital payments, allowing companies to send, receive, and facilitate transfers between bank accounts within the United States, without the need for traditional credit card networks.
+
+## Plaid
+
+Plaid is a financial technology company that provides a secure way for applications to connect with users' bank accounts, enabling access to financial data and the ability to initiate payments. It acts as a middleman between financial institutions and third-party apps, streamlining the process of account verification and data retrieval while maintaining user privacy and security.
+
+## Sentry
+
+Sentry is an application monitoring and error tracking platform that helps developers identify, triage, and resolve software issues in real-time. It provides detailed error reports, performance monitoring, and crash analytics across various programming languages and frameworks, enabling teams to improve application reliability and user experience by quickly detecting and fixing bugs in their code.
+
+---
 
 </div>
 
