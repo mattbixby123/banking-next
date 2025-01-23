@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
+    "@opentelemetry/instrumentation-mysql": "^0.45.0",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-progress": "^1.1.0",
