@@ -7,64 +7,122 @@
     <img src="https://img.shields.io/badge/-Appwrite-black?style=for-the-badge&logoColor=white&logo=appwrite&color=FD366E" alt="appwrite" />
   </div>
 
-  <h3 align="center">A Fintech Bank Application</h3>
-
-   <div align="center">
-     This project was built using Next JS, TypeScript, TailwindCSS, and Appwrite. Please visit the app @ https://banking-next-khaki.vercel.app
-     create a user and connect a bank using the plaid sandbox username: 'user_good' password: 'user_pass'.
-    </div>
-
-# FinTech Tools Overview
-
-## Dwolla
-
-Dwolla is a financial technology company that provides a platform for businesses to integrate sophisticated payment solutions into their applications or systems. It specializes in facilitating bank transfers and digital payments, allowing companies to send, receive, and facilitate transfers between bank accounts within the United States, without the need for traditional credit card networks.
-
-## Plaid
-
-Plaid is a financial technology company that provides a secure way for applications to connect with users' bank accounts, enabling access to financial data and the ability to initiate payments. It acts as a middleman between financial institutions and third-party apps, streamlining the process of account verification and data retrieval while maintaining user privacy and security.
-
-## Sentry
-
-Sentry is an application monitoring and error tracking platform that helps developers identify, triage, and resolve software issues in real-time. It provides detailed error reports, performance monitoring, and crash analytics across various programming languages and frameworks, enabling teams to improve application reliability and user experience by quickly detecting and fixing bugs in their code.
-
----
-
+  <h3 align="center"><strong>Horizon Bank - A Fintech Bank Application</strong></h3>
+  
+A modern fintech banking application built with Next.js, TypeScript, and Tailwind CSS, featuring secure bank integration through Plaid and ACH transfers via Dwolla.
 </div>
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 💡 Inspiration
 
-## Getting Started
+This was an interesting challenge - building a secure banking application in a week. I chose Appwrite over traditional AWS services here because it provided a faster development cycle while still maintaining security standards. The integration of Dwolla and Plaid APIs was crucial - I wanted to demonstrate I could work with real-world financial APIs. Sentry.io was added for error monitoring because in a banking app, you need to catch and address issues immediately.
 
-First, run the development server:
+## 🌟 Features
 
+- **Secure Authentication**: User registration and login powered by Appwrite
+- **Bank Account Integration**: Connect and manage bank accounts using Plaid API
+- **ACH Transfers**: Facilitate secure bank transfers through Dwolla's ACH API
+- **Real-time Error Monitoring**: Integrated Sentry.io for immediate issue detection and resolution
+- **Responsive Design**: Mobile-first interface built with Tailwind CSS
+- **Type Safety**: Built with TypeScript for enhanced code reliability
+
+## 🚀 Live Demo
+
+Visit the application at: [https://banking-next-khaki.vercel.app](https://banking-next-khaki.vercel.app)
+
+Test credentials for Plaid sandbox:
+- Username: `user_good`
+- Password: `pass_good`
+
+## 🛠️ Technical Stack
+
+- **Frontend Framework**: Next.js
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Backend as a Service**: Appwrite
+- **Financial APIs**: 
+  - Plaid (Bank account integration)
+  - Dwolla (ACH transfers)
+- **Monitoring**: Sentry.io
+- **Deployment**: Vercel
+
+## 🏗️ Local Development
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/horizon-bank.git
+cd horizon-bank
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
+
+Required environment variables:
+```env
+NEXT_PUBLIC_APPWRITE_PROJECT_ID=
+NEXT_PUBLIC_APPWRITE_ENDPOINT=
+PLAID_CLIENT_ID=
+PLAID_SECRET=
+DWOLLA_API_KEY=
+DWOLLA_API_SECRET=
+SENTRY_DSN=
+```
+
+4. Start the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔒 Security Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Secure bank account integration through Plaid's OAuth flow
+- Encrypted data storage with Appwrite
+- Real-time error tracking and monitoring with Sentry.io
+- Secure ACH transfers through Dwolla's verified API
+- Environment variable protection for sensitive credentials
 
-## Learn More
+## 📱 Key Components
 
-To learn more about Next.js, take a look at the following resources:
+- **Auth System**: Complete authentication flow with registration, login, and password reset
+- **Bank Integration**: Seamless bank account connection through Plaid Link
+- **Transfer System**: ACH transfer capabilities between connected accounts
+- **Dashboard**: Real-time account balance and transaction monitoring
+- **Profile Management**: User profile and settings management
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🤝 Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## Deploy on Vercel
+## 📄 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 🙏 Acknowledgments
+
+- Next.js team for the amazing framework
+- Appwrite for the robust backend services
+- Plaid and Dwolla for their comprehensive financial APIs
+- Sentry.io for error tracking capabilities
+- The open-source community for their invaluable resources
+
+## 🔗 Contact
+
+Matthew Bixby - [LinkedIn](https://www.linkedin.com/in/matthewbixby/) - matthew.bixby1@gmail.com
+
+Project Link: [https://github.com/yourusername/horizon-bank](https://github.com/yourusername/horizon-bank)
