@@ -29,9 +29,19 @@ This was an interesting challenge - building a secure banking application in a w
 
 Visit the application at: [https://banking-next-khaki.vercel.app](https://banking-next-khaki.vercel.app)
 
-Test credentials for Plaid sandbox:
-- Username: `user_good`
-- Password: `pass_good`
+There are two ways to explore the application:
+
+### Option 1: Quick Demo Access
+Use these pre-configured demo credentials for instant access:
+- Email: demo@account.com
+- Password: Testing123
+
+### Option 2: Full Experience
+1. Create your own account through the sign-up process
+2. After signing up, you'll be guided to connect your bank account through Plaid
+3. Use these Plaid sandbox credentials to link a Chase checking or savings account:
+   - Username: user_good
+   - Password: pass_good
 
 ## 🛠️ Technical Stack
 
