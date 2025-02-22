@@ -24,6 +24,7 @@ const AuthForm = ({ type }: { type: string }) => {
   const router = useRouter();
   const [user, setuser] = useState(null);
   const [isLoading, setisLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const formSchema = authFormSchema(type);
 
@@ -38,6 +39,7 @@ const AuthForm = ({ type }: { type: string }) => {
    
     // 2. Define a submit handler.
     const onSubmit = async (data: z.infer<typeof formSchema>) => {
+      setError(null);
       setisLoading(true)
 
       try {
@@ -67,10 +69,11 @@ const AuthForm = ({ type }: { type: string }) => {
 
             if(response) router.push('/')
         }
-      } catch (error) {
-        console.log(error);
+      } catch (error: any) {
+        setError('Invalid email or password');
+        console.error('Auth error:', error);
       } finally {
-        setisLoading(false)
+        setisLoading(false);
       }
     }
   
@@ -192,6 +195,9 @@ const AuthForm = ({ type }: { type: string }) => {
               placeholder='Enter your password'
               />
               <div className='flex flex-col gap-4'>
+              {error && (
+                <p className="text-red-500">{error}</p>
+              )}
                 <Button type="submit" disabled={isLoading} className='form-btn'>
                   {isLoading ? (
                     <>
