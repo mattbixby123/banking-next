@@ -12,18 +12,24 @@ Sentry.init({
 
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
-  replaysOnErrorSampleRate: 1.0,
 
-  // This sets the sample rate to be 10%. You may want this to be 100% while
-  // in development and sample at a lower rate in production
-  replaysSessionSampleRate: 0.1,
-
-  // You can remove this option if you're not planning to use the Sentry Session Replay feature:
+  // Only include minimal integrations to avoid DOM conflicts
   integrations: [
-    Sentry.replayIntegration({
-      // Additional Replay configuration goes in here, for example:
-      maskAllText: true,
-      blockAllMedia: true,
-    }),
+    Sentry.breadcrumbsIntegration(),
+    Sentry.globalHandlersIntegration(),
+    // Explicitly exclude browser integrations that instrument the DOM
   ],
+
+  // Disable automatic session tracking
+  autoSessionTracking: false,
+
+  // Disable automatic error capturing that might conflict
+  beforeSend(event) {
+    // Filter out errors that might be from Plaid's Sentry instance
+    if (event.exception?.values?.[0]?.value?.includes('simulateEvent') || 
+        event.exception?.values?.[0]?.value?.includes('Object Not Found Matching Id')) {
+      return null; // Don't send these conflicting errors
+    }
+    return event;
+  },
 });
