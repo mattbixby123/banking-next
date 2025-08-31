@@ -33,7 +33,7 @@ There are two ways to explore the application:
 
 ### Option 1: Quick Demo Access
 Use these pre-configured demo credentials for instant access:
-- Email: demo@account.com
+- Email: demo@access.com
 - Password: Testing123
 
 ### Option 2: Full Experience
