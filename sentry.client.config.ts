@@ -20,9 +20,6 @@ Sentry.init({
     // Explicitly exclude browser integrations that instrument the DOM
   ],
 
-  // Disable automatic session tracking
-  autoSessionTracking: false,
-
   // Disable automatic error capturing that might conflict
   beforeSend(event) {
     // Filter out errors that might be from Plaid's Sentry instance
