@@ -6,18 +6,18 @@ import { getLoggedInUser } from '@/lib/actions/user.actions';
 import { formatAmount } from '@/lib/utils';
 import React from 'react'
 
-const TransactionHistory = async ({ searchParams: { id, page }}: SearchParamProps) => {
+const TransactionHistory = async ({ searchParams }: SearchParamProps) => {
+  const { id, page } = await searchParams;
   const currentPage = Number(page as string) || 1;
   const loggedIn = await getLoggedInUser();
   const accounts = await getAccounts({ userId: loggedIn.$id })
 
   if(!accounts) return;
-  const accountsData =accounts?.data;
+  const accountsData = accounts?.data;
 
   const appwriteItemId = (id as string) || accountsData[0]?.appwriteItemId; 
 
   const account = await getAccount({ appwriteItemId });
-
 
   const rowsPerPage = 10;
   const totalPages = Math.ceil(account?.transactions.length / rowsPerPage );
